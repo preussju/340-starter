@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <%- include('../partials/head')%>
 
 <body>
+    <picture class="back">
+        <source media="(min-width: 510px)" srcset="/images/site/small_check.jpg">
+        <img src="/images/site/checkerboard.jpg" alt="back">
+    </picture>
     <div id="wrapper">
     <%- include('../partials/header')%>
     <%- include('../partials/navigation')%>
