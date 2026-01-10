@@ -32,7 +32,6 @@
   text-decoration: none;
   font-weight: 400;
   padding-left: 10px;
-  padding-right: 10px;
 }
 
 .siteName a{
@@ -42,6 +41,7 @@
 
 #tools a{
   font-size: 1.5rem;
+  padding-right:10px;
 }
 
 #tools :hover {
