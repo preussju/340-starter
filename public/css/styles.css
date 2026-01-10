@@ -127,7 +127,6 @@ h3, h4{
 
 .block {
   padding-top: 120px;
-  margin: 10px;
   display: flex;
   flex-direction: column-reverse;
 }
@@ -235,6 +234,7 @@ footer{
 
 .block {
   padding-top: 30px;
+  margin: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
