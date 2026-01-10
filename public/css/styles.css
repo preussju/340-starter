@@ -86,7 +86,7 @@ h1{
 }
 
 .over {
-  background-color: rgba(116, 18, 18, 0.281);
+  background-color: rgba(116, 18, 18, 0.644);
   padding-bottom: 50px;
   padding-left: 20px;
   padding-right:20px;
@@ -96,11 +96,13 @@ h1{
 }
 
 .over h2{
+  color: antiquewhite;
   font-size: 1.2rem;
   font-family: var(--h-font);
 }
 
 .over p{
+  color: antiquewhite;
   font-size: 1rem;
   margin: 1px;
 }
