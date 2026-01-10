@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: var(--o-font);
   position: relative;
+  margin :0 ;
 }
 
 :root {
@@ -17,21 +18,7 @@
 /*******head***************/
 
 .back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.back img, .back source{
-  width: 100%;
-  height: 100%;
-}
-
-#wrapper{
-  max-width: 980px;
-  margin: 0 auto;
-  background-color: white;
-  border: 5px solid var(--primary-color);
+  display: none;
 }
 
 #top-header{
@@ -43,29 +30,46 @@
 .siteName a, #tools a{
   color: black;
   text-decoration: none;
-  font-size: 1.8rem;
   font-weight: 400;
   padding-left: 10px;
   padding-right: 10px;
 }
 
 .siteName a{
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
+}
+
+#tools a{
+  font-size: 1.5rem;
+}
+
+#tools :hover {
+  padding-bottom: 40px;
+  background-color: rgba(160, 26, 26, 0.281);
 }
 
 /*******navigation***************/
 
 .nav ul{
-  color: antiquewhite;
   display: flex;
   flex-direction: row;
   background-color: var(--primary-color);
   padding: 1rem;
   justify-content: space-around;
   list-style: none;
+}
+
+.nav a {
+  text-decoration: none;
+  color: antiquewhite;
   font-family: var(--h-font);
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+
+nav a:hover {
+  padding: 18px;
+  background-color: rgba(211, 211, 211, 0.199);
 }
 
 /*******main**************/
@@ -76,8 +80,9 @@ h1{
 
 .car{
   display: grid;
-  position: relative;
   justify-content: center;
+  top: 50px;
+  left:50px;
 }
 
 .over {
@@ -86,16 +91,17 @@ h1{
   padding-left: 20px;
   padding-right:20px;
   position: absolute;
-  top:100px;
-  left:70px;
+  top:80px;
+  left:30px;
 }
 
 .over h2{
+  font-size: 1.2rem;
   font-family: var(--h-font);
 }
 
 .over p{
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 1px;
 }
 
@@ -104,6 +110,14 @@ h1{
   background-color: var(--primary-color);
   padding: 15px;
   top: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.over a:hover {
+  padding: 18px;
+  color: black;
+  background-color: rgba(211, 211, 211, 0.199);
 }
 
 h3, h4{
@@ -112,13 +126,14 @@ h3, h4{
 }
 
 .block {
-  padding-top: 30px;
+  padding-top: 120px;
   margin: 10px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 #upgrades{
+  margin-top: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -127,15 +142,22 @@ h3, h4{
   border: 2px solid var(--primary-color);
   padding: 10px;
   background-color: rgba(116, 18, 18, 0.281);
+  margin: 10px;
 }
 
 #upgrades figure img{
   border: 2px solid var(--primary-color);
   background-color: white;
+  left: 20px;
 }
 
-#upgrades figcaption{
+#upgrades figcaption {
   text-align: center;
+  font-size: 1.2rem;
+}
+
+#upgrades figcaption a{
+  color: black;
 }
 
 #reviews p{
@@ -145,4 +167,80 @@ h3, h4{
   font-weight: 600;
   font-size: 1.2rem;
   max-width: 350px;
+}
+
+footer{
+  padding: 10px;
+}
+
+
+@media screen and (min-width: 800px) {
+
+/*******head***************/
+.back {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .back img,
+  .back source {
+    width: 100%;
+    height: 100%;
+  }
+
+#wrapper{
+  max-width: 980px;
+  margin: 0 auto;
+  background-color: white;
+  border: 5px solid var(--primary-color);
+}
+
+.siteName a {
+  font-size: 3rem;
+}
+
+#tools a {
+  font-size: 1.8rem;
+}
+
+/*******navigation***************/
+
+.nav a {
+  font-size: 2rem;
+}
+
+/*******main**************/
+
+.car{
+  top:0px;
+  left: 0px;
+}
+
+.over {
+  padding-bottom: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  top: 100px;
+  left: 70px;
+}
+.over p {
+  font-size: 1.2rem;
+}
+
+.over h2 {
+  font-size: 2rem;
+}
+
+.block {
+  padding-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#upgrades {
+  margin-top: 0px;
+}
+
 }
