@@ -136,6 +136,7 @@ h3, h4{
   margin-top: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  max-width: 300px;
 }
 
 #upgrades figure{
@@ -148,7 +149,6 @@ h3, h4{
 #upgrades figure img{
   border: 2px solid var(--primary-color);
   background-color: white;
-  left: 20px;
 }
 
 #upgrades figcaption {
@@ -241,6 +241,11 @@ footer{
 
 #upgrades {
   margin-top: 0px;
+  max-width: 900px;
+}
+
+#upgrades figure img {
+  left: 20px;
 }
 
 }
