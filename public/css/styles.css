@@ -196,6 +196,40 @@ footer{
   color: var(--primary-color);
 }
 
+/***** details **********/
+
+.detail-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 10px;
+}
+
+.detail-grid img{
+  max-width: 400px;
+  left: 40px;  
+  top: 20px;
+}
+
+#detail-display{
+  margin: 10px;
+}
+
+#detail-display h2{
+  padding-top: 30px;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+#detail-display p{
+  padding-top: 15px;
+  font-size: 1.3rem;
+
+.label{
+  font-weight: bolder;
+}
+
+}
+
 
 
 @media screen and (min-width: 800px) {
@@ -287,6 +321,20 @@ footer{
   border: 2px solid black;
   border-radius: 30px;
   padding: 10px;
+}
+
+/***** details **********/
+
+.detail-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.detail-grid img {
+  left: 20px;
+}
+
+#detail-display h2 {
+  padding-top: 0px;
 }
 
 }
