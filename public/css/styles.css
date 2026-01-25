@@ -205,7 +205,7 @@ footer{
 }
 
 .detail-grid img{
-  max-width: 400px;
+  max-width: 300px;
   left: 40px;  
   top: 20px;
 }
@@ -330,6 +330,7 @@ footer{
 }
 
 .detail-grid img {
+  max-width: 400px;
   left: 20px;
 }
 
