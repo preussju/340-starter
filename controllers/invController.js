@@ -9,6 +9,11 @@ const invCont = {}
 invCont.buildByClassificationId = async function (req, res, next) {
   const classification_id = req.params.classificationId
   const data = await invModel.getInventoryByClassificationId(classification_id)
+    if (!data || data.length === 0) {
+    const err = new Error("Ops! Page not found")
+    err.status = 404
+    return next(err)
+  }
   const grid = await utilities.buildClassificationGrid(data)
   let nav = await utilities.getNav()
   const className = data[0].classification_name
@@ -25,6 +30,11 @@ invCont.buildByClassificationId = async function (req, res, next) {
 invCont.buildBydetailId= async function (req, res, next) {
   const detail_id = req.params.detailId
   const data = await invModel.getInventoryByDetailId(detail_id)
+  if (!data) {
+    const err = new Error("Ops! Vehicle not found")
+    err.status = 404
+    return next(err)
+  }
   const grid = await utilities.buildDetailGrid(data)
   let nav = await utilities.getNav()
   const className = data.inv_year + ' ' + data.inv_make + ' ' + data.inv_model 
