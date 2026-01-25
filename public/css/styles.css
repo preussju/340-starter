@@ -230,7 +230,11 @@ footer{
 
 }
 
+/***** error ********/
 
+.error-img img{
+  max-width: 300px;
+}
 
 @media screen and (min-width: 800px) {
 
@@ -336,6 +340,13 @@ footer{
 
 #detail-display h2 {
   padding-top: 0px;
+}
+
+/***** error ********/
+
+.error-img img {
+  max-width: 100%;
+  left: 100px;
 }
 
 }

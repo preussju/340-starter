@@ -32,7 +32,13 @@ app.use(static)
 //})
 //app.get("/", baseController.buildHome)  //M-V-C methodology.
 app.get("/", utilities.handleErrors(baseController.buildHome))
+app.use("/inv", utilities.handleErrors(inventoryRoute))
 // File Not Found Route - must be last route in list
+
+app.get("/error", (req, res, next) => {
+    next({status: 500, message: 'Intentional 500 error for testing.'})
+})
+
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })
@@ -41,12 +47,13 @@ app.use(async (req, res, next) => {
 * Express Error Handler
 * Place after all other middleware
 *************************/
+
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav()
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
-  if(err.status == 404){ message = err.message} else {message = 'Oh no! There was a crash. Maybe try a different route?'}
+  if (err.status == 404) { message = err.message } if (err.status == 500) {message = "There was a Intentional car crash | 500 error for testing."}  else {message = 'Oh no! There was a crash. Maybe try a different route?'}
   res.render("errors/error", {
-    title: err.status || 'Server Error',
+    title: err.status + ' Server Error',
     message,
     nav
   })
