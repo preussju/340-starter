@@ -223,11 +223,10 @@ footer{
 #detail-display p{
   padding-top: 15px;
   font-size: 1.3rem;
-
-.label{
-  font-weight: bolder;
 }
 
+.label {
+  font-weight: bolder;
 }
 
 /***** error ********/
