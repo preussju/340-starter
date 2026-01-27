@@ -249,6 +249,7 @@ form{
   border-radius: 40px;
   padding: 20px 80px 10px 80px;
   text-align: left;
+  width: 350px;
 }
 
 form label{
@@ -256,8 +257,8 @@ form label{
   font-size: 1.5rem;
 }
 
-.form-grid p, .form-grid a{
-  color: antiquewhite;
+.form-grid a{
+  color: black;
 }
 
 input[type=submit]{
@@ -269,8 +270,19 @@ input[type=submit]{
 }
 
 input[type=email],
-input[type=password]{
+input[type=text],
+input[type=password],
+input[type=submit]{
   border-radius: 8px;
+  height: 40px;
+}
+
+button{
+  margin-top: 10px;
+  border: none;
+  padding: 10px;
+  background-color: rgba(114, 27, 27, 0.322);
+  border-radius: 30px;
 }
 
 @media screen and (min-width: 800px) {
