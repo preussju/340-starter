@@ -45,5 +45,18 @@ async function getInventoryByDetailId(detail_id) {
 }
 
 
+/* *****************************
+*   Register new classification 
+* *************************** */
+async function registerClassification(classification_name){
+  try {
+    const sql = "INSERT INTO public.classification (classification_name) VALUES ($1) RETURNING *"
+    return await pool.query(sql, [classification_name])
+  } catch (error) {
+    return error.message
+  }
+}
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByDetailId};
+
+
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByDetailId, registerClassification};

@@ -47,5 +47,71 @@ invCont.buildBydetailId= async function (req, res, next) {
   })
 }
 
+/* management view */
 
-  module.exports = invCont
+invCont.buildManagement= async function (req, res, next) {
+let nav = await utilities.getNav()
+  res.render("./inventory/management", {
+    title: "New Content",
+    nav,
+    errors: null,
+  })
+}
+
+
+invCont.buildAddClassification = async function (req, res, next) {
+let nav = await utilities.getNav()
+  res.render("./inventory/add-classification", {
+    title: "Add New Classification",
+    nav,
+    errors: null,
+  })
+}
+
+invCont.buildAddItem = async function (req, res, next) {
+let nav = await utilities.getNav()
+  res.render("./inventory/add-item", {
+    title: "Add New Item",
+    nav,
+    errors: null,
+  })
+}
+
+
+/* ****************************************
+*  Process Registration
+* *************************************** */
+
+  invCont.registerClassification = async function (req, res, next) {
+    let nav = await utilities.getNav()
+    const { classification_name} = req.body
+  
+      req.flash("notice", 'Sorry, there was an error processing the registration.')
+      res.status(500).render("inventory/add-classification", {
+        title: "Registration",
+        nav,
+        errors: null,
+      })
+    
+    const regResult = await invModel.registerClassification(classification_name)
+  
+    if (regResult) {
+      req.flash(
+        "notice",
+        `Congratulations, you registered a new classification!`)
+     res.status(201).render("inventory/add-classification", {
+       title: "Login",
+       nav,
+      errors: null,
+     })
+    } else {
+      req.flash("notice", "Sorry, the registration failed.")
+      res.status(501).render("inventory/add-classification", {
+        title: "Registration",
+        nav,
+        errors: null,
+      })
+    }
+  }
+
+module.exports = invCont

@@ -67,6 +67,7 @@ app.use(static)
 //app.get("/", baseController.buildHome)  //M-V-C methodology.
 app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", utilities.handleErrors(inventoryRoute))
+app.use("/inv/new-classification", utilities.handleErrors(inventoryRoute))
 
 // File Not Found Route - must be last route in list
 app.get("/error", (req, res, next) => {

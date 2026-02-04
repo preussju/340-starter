@@ -237,7 +237,8 @@ footer{
 
 /***** account login ********/
 
-.form-grid {
+.form-grid,
+.add-classification-grid{
   display: grid;
   place-items: center;
   background-color: var(--primary-color);
@@ -293,6 +294,20 @@ input:focus:invalid {
 input:required:valid {
   background-color: rgba(0, 128, 0, 0.226);
 }
+
+.mgnt-links{
+  display: grid;
+  font-size: large;
+  padding: 10px;
+  background-color: antiquewhite;
+}
+.mgnt-links a{
+  color: black;
+  font-family: var(--heading-font);
+  padding: 10px;
+}
+
+
 
 
 @media screen and (min-width: 800px) {

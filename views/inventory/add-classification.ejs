@@ -1,0 +1,11 @@
+<%- messages() %>
+
+<div class="add-classification-grid">
+    <form id="classificationForm" action="/inv/new-classification" method="post">
+        <label for="classification_name">Classification Name:</label><br>
+        <span>The classification name cannot contain a space or special character of any kind (only alphanumeric characters are
+        allowed).</span>
+        <input type="text" id="classification_name" name="classification_name" required pattern="^[a-zA-Z0-9]+$" ><br>
+        <input type="submit" value="REGISTER">
+    </form>
+</div>
