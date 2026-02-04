@@ -68,11 +68,25 @@ let nav = await utilities.getNav()
   })
 }
 
-invCont.buildAddItem = async function (req, res, next) {
-let nav = await utilities.getNav()
-  res.render("./inventory/add-item", {
+  invCont.buildClassificationList= async function(req, res) {
+    const classifications = await inventory-model.getInventoryByClassificationId();
+
+    const classificationList = utilities.buildClassificationList(classifications);
+    res.render('inventory/add-inventory', {
+        classificationList: classificationList // This is the variable the view will use
+    });
+};
+
+
+invCont.buildAddInventory = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const classificationData = await invModel.getClassifications() 
+  const classificationList = await utilities.buildClassificationList(classificationData)
+
+  res.render("./inventory/add-inventory", {
     title: "Add New Item",
     nav,
+    classificationList,
     errors: null,
   })
 }
@@ -106,5 +120,32 @@ let nav = await utilities.getNav()
         })
       }
   }
+
+
+  invCont.registerInventory = async function (req, res, next) {
+    
+    const {classification_id,inv_make,inv_model,inv_description,inv_image,inv_thumbnail,inv_price,inv_year,inv_miles,inv_color} = req.body//
+
+    const regResult = await invModel.registerInventory(classification_id,inv_make,inv_model,inv_description,inv_image,inv_thumbnail,inv_price,inv_year,inv_miles,inv_color)//
+    let nav = await utilities.getNav()
+    
+    if (regResult) {
+      req.flash( "notice", `Congratulations, you registered a new inventory item!`)
+      res.status(201).render("inventory/management", {
+        title: "Registration",
+        nav,
+        errors: null,
+    })
+      
+    } else {
+        req.flash("notice", "Sorry, the registration failed.")
+        res.status(501).render("inventory/management", {
+          title: "Registration",
+          nav,
+          errors: null,
+        })
+      }
+}
+  
 
   module.exports = invCont;

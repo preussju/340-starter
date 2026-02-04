@@ -16,10 +16,12 @@ router.get("/", invController.buildManagement);
 //
 router.get("/new-classification", utilities.handleErrors(invController.buildAddClassification));
 //
-router.get("/new-item", utilities.handleErrors(invController.buildAddItem));
+router.get("/new-inventory", utilities.handleErrors(invController.buildAddInventory));
 // input
 router.post('/new-classification', invController.registerClassification);
 router.post("/new-classification", (req, res) => { res.status(200).send('adding process') })
 
+router.post('/new-inventory', invController.registerInventory);
+router.post("/new-inventory", (req, res) => { res.status(200).send('adding process') })
 
 module.exports = router;
