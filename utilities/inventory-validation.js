@@ -40,19 +40,23 @@ validate.inventoryRules = () => {
       .matches(/^\/images\/vehicles\/.*\.(jpg|jpeg|png)$/)
       .withMessage("Thumbnail path must be in /images/vehicles/ and end with .jpg, .jpeg, or .png."),
 
-    body("inv_price")
+      body("inv_price")
+      .notEmpty()
       .isFloat({ min: 0 })
       .withMessage("Price must be a positive number."),
 
-    body("inv_year")
+      body("inv_year")
+      .notEmpty()
       .isInt({ min: 1900, max: new Date().getFullYear() + 1 })
       .withMessage("Please provide a valid year."),
 
-    body("inv_miles")
+      body("inv_miles")
+      .notEmpty()
       .isInt({ min: 0 })
       .withMessage("Miles must be a non-negative integer."),
 
-    body("inv_color")
+      body("inv_color")
+      .notEmpty()
       .trim()
       .matches(/^[A-Za-z ]+$/)
       .withMessage("Color must contain only letters and spaces."),
