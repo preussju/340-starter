@@ -1,5 +1,5 @@
 // Needed Resources
-const regValidate = require('../utilities/account-validation')
+const regValidate = require('../utilities/inventory-validation')
 
 const express = require("express")
 const router = new express.Router() 
@@ -18,10 +18,10 @@ router.get("/new-classification", utilities.handleErrors(invController.buildAddC
 //
 router.get("/new-inventory", utilities.handleErrors(invController.buildAddInventory));
 // input
-router.post('/new-classification', invController.registerClassification);
+router.post('/new-classification', regValidate.classificationRules, regValidate.checkClassificationData, utilities.handleErrors(invController.registerClassification));
 router.post("/new-classification", (req, res) => { res.status(200).send('adding process') })
 
-router.post('/new-inventory', invController.registerInventory);
+router.post('/new-inventory', regValidate.inventoryRules, regValidate.checkInventoryData, invController.registerInventory);
 router.post("/new-inventory", (req, res) => { res.status(200).send('adding process') })
 
 module.exports = router;
