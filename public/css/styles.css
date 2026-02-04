@@ -238,7 +238,8 @@ footer{
 /***** account login ********/
 
 .form-grid,
-.add-classification-grid{
+.add-classification-grid,
+.add-inv-grid{
   display: grid;
   place-items: center;
   background-color: var(--primary-color);
@@ -273,7 +274,10 @@ input[type=submit]{
 input[type=email],
 input[type=text],
 input[type=password],
-input[type=submit]{
+input[type=submit],
+input[type=number],
+textarea,
+#classificationList{
   border-radius: 8px;
   height: 40px;
 }
