@@ -11,6 +11,8 @@ const utilities = require("../utilities/index")
 router.get("/type/:classificationId", invController.buildByClassificationId);
 // Route to build details by classification view
 router.get("/detail/:detailId", invController.buildBydetailId);
+//js route
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 //
 router.get("/", invController.buildManagement);
 //

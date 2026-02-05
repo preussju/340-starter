@@ -239,7 +239,7 @@ footer{
 
 .form-grid,
 .add-classification-grid,
-.add-inv-grid{
+.add-inv-grid {
   display: grid;
   place-items: center;
   background-color: var(--primary-color);
@@ -311,6 +311,35 @@ input:required:valid {
   padding: 10px;
 }
 
+/*inv management view */
+
+.manage-inv{
+  display: grid;
+  place-items: center;
+}
+
+.manage-inv table{
+  background-color: antiquewhite;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 30px;
+  
+}
+
+#inventoryDisplay a {
+  text-decoration: none;
+  font-family: var(--heading-font);
+  color: white;
+  padding: 10px;
+  margin: 20px;
+  background-color: var(--primary-color);
+  border-radius: 30px;
+}
+
+#inventoryDisplay td{
+  padding: 10px;
+  margin: 20px;
+}
 
 
 
