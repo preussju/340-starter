@@ -1,5 +1,16 @@
 <%- messages() %>
 
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(error=> { %>
+            <li>
+                <%= error.msg %>
+            </li>
+            <% }) %>
+    </ul>
+    <% } %>
+
+
 <div class="add-inv-grid">
     <form id="invForm" action="/inv/new-inventory" method="post">
         <p>All Fields are Required</p>

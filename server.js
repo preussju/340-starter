@@ -19,6 +19,7 @@ const accountRoute = require("./routes/accountRoute")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require('./utilities/index')
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 
 /* ***********************
@@ -78,6 +79,8 @@ app.get("/error", (req, res, next) => {
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })
+
+app.use(cookieParser())
 
 /* ***********************
 * Express Error Handler

@@ -1,5 +1,15 @@
 <%- messages() %>
 
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(error=> { %>
+            <li>
+                <%= error.msg %>
+            </li>
+            <% }) %>
+    </ul>
+    <% } %>
+
 <div class="add-classification-grid">
     <form id="classificationForm" action="/inv/new-classification" method="post">
         <label for="classification_name">Classification Name:</label><br>

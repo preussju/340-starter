@@ -10,12 +10,15 @@ const utilities = require("../utilities/index")
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 //registration view 
 router.get("/register", utilities.handleErrors(accountController.buildRegister));
+//account management view
+router.get("/account-management", utilities.handleErrors(accountController.buildAccountManagement));
+
 //register the input
 router.post('/register', regValidate.registrationRules(), regValidate.checkRegData, utilities.handleErrors(accountController.registerAccount))
 //login input
-router.post('/login', regValidate.LoginRules(), regValidate.checkLoginData )
+router.post('/login', regValidate.LoginRules(), regValidate.checkLoginData, utilities.handleErrors(accountController.accountLogin))
 // Process the login attempt
-router.post("/login", (req, res) => { res.status(200).send('login process') })
+//router.post("/login", (req, res) => { res.status(200).send('login process') })
 
 
 
