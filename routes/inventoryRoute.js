@@ -10,7 +10,9 @@ const utilities = require("../utilities/index")
 // Route to build inventory by classification view
 router.get("/type/:classificationId", invController.buildByClassificationId);
 // Route to build details by classification view
-router.get("/detail/:detailId", invController.buildBydetailId);
+router.get("/detail/:invId", invController.buildBydetailId);
+// Route to inventory edit management view
+router.get("/edit/:detailId", utilities.handleErrors(invController.editBydetailId));
 //js route
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 //
@@ -26,4 +28,7 @@ router.post('/new-classification', regValidate.classificationRules(), regValidat
 router.post('/new-inventory', regValidate.inventoryRules(), regValidate.checkInventoryData, invController.registerInventory);
 //router.post("/new-inventory", (req, res) => { res.status(200).send('adding process') })
 
+//edit inv
+router.post("/edit/", regValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
+//regValidate.newInventoryRules()
 module.exports = router;
