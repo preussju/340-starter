@@ -11,7 +11,7 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin));
 //registration view 
 router.get("/register", utilities.handleErrors(accountController.buildRegister));
 //account management view
-router.get("/account-management", utilities.handleErrors(accountController.buildAccountManagement));
+router.get("/",  utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement));
 
 //register the input
 router.post('/register', regValidate.registrationRules(), regValidate.checkRegData, utilities.handleErrors(accountController.registerAccount))
