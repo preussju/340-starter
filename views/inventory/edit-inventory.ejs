@@ -12,10 +12,10 @@
 
 
 <div class="edit-inv-grid">
-    <form id="invForm" action="/inv/edit/" method="post">
+    <form id="updateForm" action="/inv/edit/" method="post">
         <p>All Fields are Required</p>
 
-        <label for="classification_id">Classification:</label><br>
+        <label for="classificationList">Classification:</label><br>
         <%- classificationList %>
 
         <label for="inv_make">Make:</label><br>
@@ -25,13 +25,13 @@
         <input type="text" id="inv_model" name="inv_model" required minlength="3" value="<%= locals.inv_model %>"><br>
         
         <label for="inv_description">Description:</label><br>
-        <textarea type="text" id="inv_description" name="inv_description" rows="4" required value="<%= locals.inv_description %>"></textarea><br>
+        <textarea id="inv_description" name="inv_description" rows="4" required><%= locals.inv_description %></textarea><br>
         
         <label for="inv_image">Image Path:</label><br>
-        <input type="text" id="inv_image" name="inv_image" required pattern="/images/vehicles/.*\.(jpg|jpeg|png)$" value="/images/vehicles/no-image.png" value="<%= locals.inv_image %>"><br>
+        <input type="text" id="inv_image" name="inv_image" required pattern="/images/vehicles/.*\.(jpg|jpeg|png)$" value="<%= locals.inv_image %>"><br>
         
         <label for="inv_thumbnail">Thumbnail Path:</label><br>
-        <input type="text" id="inv_thumbnail" name="inv_thumbnail" required pattern="/images/vehicles/.*\.(jpg|jpeg|png)$" value="/images/vehicles/no-image.png" value="<%= locals.inv_thumbnail%>"><br>
+        <input type="text" id="inv_thumbnail" name="inv_thumbnail" required pattern="/images/vehicles/.*\.(jpg|jpeg|png)$" value="<%= locals.inv_thumbnail %>"><br>
         
         <label for="inv_price">Price:</label><br>
         <input type="number" id="inv_price" name="inv_price" min="0" step="0.01" required value="<%= locals.inv_price %>"><br>
@@ -45,8 +45,10 @@
         <label for="inv_color">Color:</label><br>
         <input type="text" id="inv_color" name="inv_color" required pattern="[A-Za-z ]+" value="<%= locals.inv_color %>"><br>
 
-        <input type="submit" name="submit" value="Update Vehicle">
+        <input type="submit" name="submit" value="Update Vehicle" disabled>
 
         <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"<% } %>>
     </form>
 </div>
+
+<script src="/js/inv-update.js"></script>
