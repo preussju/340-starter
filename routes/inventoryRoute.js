@@ -13,6 +13,8 @@ router.get("/type/:classificationId", invController.buildByClassificationId);
 router.get("/detail/:invId", invController.buildBydetailId);
 // Route to inventory edit management view
 router.get("/edit/:detailId", utilities.handleErrors(invController.editBydetailId));
+// Route to inventory delete management view
+router.get("/delete/:detailId", utilities.handleErrors(invController.deleteBydetailId));//
 //js route
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 //
@@ -31,4 +33,7 @@ router.post('/new-inventory', regValidate.inventoryRules(), regValidate.checkInv
 //edit inv
 router.post("/edit/", regValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
 //regValidate.newInventoryRules()
+//delete inv
+router.post("/delete/", utilities.handleErrors(invController.deleteInventory));//
+
 module.exports = router;

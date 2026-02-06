@@ -1,0 +1,34 @@
+<%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(error=> { %>
+            <li>
+                <%= error.msg %>
+            </li>
+            <% }) %>
+    </ul>
+    <% } %>
+
+
+<div class="delete-inv-grid">
+    <form id="deleteForm" action="/inv/delete/" method="post">
+        <p>Confirm Deletion - The delete is permanent.</p>
+        
+        <label for="inv_make">Make:</label><br>
+        <input type="text" id="inv_make" name="inv_make" readonly minlength="3" value="<%= locals.inv_make %>"><br>
+        
+        <label for="inv_model">Model:</label><br>
+        <input type="text" id="inv_model" name="inv_model" readonly minlength="3" value="<%= locals.inv_model %>"><br>
+
+        <label for="inv_price">Price:</label><br>
+        <input type="number" id="inv_price" name="inv_price" min="0" step="0.01" readonly value="<%= locals.inv_price %>"><br>
+
+        <label for="inv_year">Year:</label><br>
+        <input type="number" id="inv_year" name="inv_year" readonly placeholder="YYYY" value="<%= locals.inv_year %>"><br>
+
+        <input type="submit" name="submit" value="Delete Vehicle" >
+
+        <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"<% } %>>
+    </form>
+</div>
