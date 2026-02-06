@@ -10,7 +10,7 @@ const utilities = require("../utilities/index")
 // Route to build inventory by classification view
 router.get("/type/:classificationId", invController.buildByClassificationId);
 // Route to build details by classification view
-router.get("/detail/:invId", invController.buildBydetailId);
+router.get("/detail/:detailId", invController.buildBydetailId);
 // Route to inventory edit management view
 router.get("/edit/:detailId", utilities.handleErrors(invController.editBydetailId));
 // Route to inventory delete management view
