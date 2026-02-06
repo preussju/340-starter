@@ -130,4 +130,15 @@ validate.checkLoginData = async (req, res, next) => {
 }
 
 
-module.exports = validate
+/* ******************************
+ * Checks if you are logged in 
+ * ***************************** */
+
+utilities.checkLoginStatus = (req, res, next) => {
+  res.locals.loggedin = req.session.loggedin || false
+  res.locals.accountData = req.session.account || null
+  next()
+}
+
+
+module.exports = validate, utilities

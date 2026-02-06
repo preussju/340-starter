@@ -43,6 +43,8 @@ app.use(function(req, res, next){
   next()
 })
 
+app.use(utilities.checkLoginStatus)
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
@@ -65,6 +67,7 @@ app.set("layout", "./layouts/layout") // not at views root
 app.use("/inv", inventoryRoute)
 app.use("/account", accountRoute)//account route 
 app.use(static)
+
 //app.get("/", function (req, res) {
 // res.render("index",{title:"Home"})
 //})

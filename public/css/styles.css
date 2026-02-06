@@ -39,14 +39,22 @@
   font-weight: bold;
 }
 
+#tools{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  text-align: center;
+}
+
 #tools a{
   font-size: 1.5rem;
   padding-right:10px;
+  margin: 10px;
 }
 
 #tools :hover {
-  padding-bottom: 40px;
-  background-color: rgba(160, 26, 26, 0.281);
+  padding-bottom: 15px;
+  color: var(--primary-color)
 }
 
 /*******navigation***************/
@@ -342,7 +350,6 @@ input:required:valid {
   padding: 10px;
   margin: 20px;
 }
-
 
 
 @media screen and (min-width: 800px) {
