@@ -35,7 +35,7 @@ async function buildRegister(req, res, next) {
 async function buildAccountManagement(req, res, next) {
   let nav = await utilities.getNav()
   res.render("account/account-management", {
-    title: "Logged In",
+    title: "Account Management",
     nav,
     errors: null
   })
@@ -132,6 +132,22 @@ async function accountLogin(req, res) {
   }
 }
 
+/* ****************************************
+ *  logs out 
+ * ************************************ */
+
+async function logout(req, res) {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Logout error:", err)
+      return res.redirect("/") 
+    }
+    res.clearCookie("sessionId", { path: "/" }) // clear cookie
+    res.clearCookie("jwt", { path: "/" }) //clear jwt
+    res.redirect("/") // back to home
+  })
+}
 
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement}
+
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement, logout}

@@ -321,6 +321,14 @@ input:required:valid {
   padding: 10px;
 }
 
+.account-management h1{
+ font-family: var(--heading-font);
+}
+
+.account-management h2{
+ padding: 10px;
+}
+
 /*inv management view */
 
 .manage-inv{

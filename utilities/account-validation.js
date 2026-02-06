@@ -140,5 +140,20 @@ utilities.checkLoginStatus = (req, res, next) => {
   next()
 }
 
+// /* ******************************
+//  * logs out  
+//  * ***************************** */
+
+// utilities.logout = (req, res) => {
+//   req.session.destroy((err) => {
+//     if (err) {
+//       console.error("Logout error:", err)
+//       return res.redirect("/") 
+//     }
+//     res.clearCookie("connect.sid") // clear session cookie
+//     res.redirect("/")
+//   })
+// }
+
 
 module.exports = validate, utilities

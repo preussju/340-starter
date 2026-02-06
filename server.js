@@ -20,6 +20,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const accountController = require("./controllers/accountController")
 
 
 /* ***********************
@@ -31,8 +32,8 @@ const cookieParser = require("cookie-parser")
     pool,
   }),
   secret: process.env.SESSION_SECRET,
-  resave: true,
-  saveUninitialized: true,
+  resave: false,
+  saveUninitialized: false,
   name: 'sessionId',
  }))
 
@@ -68,9 +69,7 @@ app.use("/inv", inventoryRoute)
 app.use("/account", accountRoute)//account route 
 app.use(static)
 
-//app.get("/", function (req, res) {
-// res.render("index",{title:"Home"})
-//})
+app.get("/account/logout", accountController.logout)
 //app.get("/", baseController.buildHome)  //M-V-C methodology.
 app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", utilities.handleErrors(inventoryRoute))
