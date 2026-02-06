@@ -240,7 +240,8 @@ footer{
 .form-grid,
 .add-classification-grid,
 .add-inv-grid,
-.edit-inv-grid {
+.edit-inv-grid,
+.delete-inv-grid {
   display: grid;
   place-items: center;
   background-color: var(--primary-color);
