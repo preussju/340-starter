@@ -156,6 +156,10 @@ invCont.buildAddInventory = async function (req, res, next) {
 // }
 
 invCont.registerInventory = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const classificationData = await invModel.getClassifications()
+  const classificationList = await utilities.buildClassificationList(classificationData)
+
   const {
     classification_id,
     inv_make,
@@ -182,27 +186,35 @@ invCont.registerInventory = async function (req, res, next) {
     inv_color
   )
 
-  let nav = await utilities.getNav()
-  const classificationData = await invModel.getClassifications()
-  const classificationList = await utilities.buildClassificationList(classificationData)
+  if (regResult) {
+      req.flash("notice", `Congratulations, you registered ${inv_make} ${inv_model}!`)
 
-  if (regResult && regResult.rows && regResult.rows[0]) {
-    const newItem = regResult.rows[0] 
-    req.flash("notice", `Congratulations, you registered a new inventory item!`)
-    return res.redirect("inventory/management")
-  } else {
-    req.flash("notice", "Sorry, the registration failed.")
-    res.status(501).render("inventory/management", {
-      title: "Registration",
-      nav,
-      classificationList,
-      errors: null,
+      res.status(201).render("inventory/management", {
+        title: "Registration",
+        nav,
+        classificationList,
+        errors: null,
     })
+  } else {
+      req.flash("notice", "Sorry, the registration failed.")
+      res.status(501).render("/new-inventory", {
+        title: "Add Inventory",
+        nav,
+        classificationList,
+        errors: null,
+        classification_id,
+        inv_make,
+        inv_model,
+        inv_description,
+        inv_image,
+        inv_thumbnail,
+        inv_price,
+        inv_year,
+        inv_miles,
+        inv_color
+      })
   }
 }
-
-
-
 
 
 /* ***************************

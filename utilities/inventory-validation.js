@@ -14,7 +14,7 @@ validate.inventoryRules = () => {
       .trim()
       .escape()
       .notEmpty()
-      .isLength({ min: 3 })
+      .isLength({ min: 3 }) 
       .withMessage("Please provide a make (at least 3 characters)."),
 
     body("inv_model")
@@ -117,10 +117,12 @@ validate.checkInventoryData = async (req, res, next) => {
   let errors = validationResult(req)
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
+    const classificationList = await utilities.buildClassificationList(classification_id)
     res.render("inventory/add-inventory", {
       errors,
       title: "Add Inventory",
       nav,
+      classificationList,
       classification_id,
       inv_make,
       inv_model,
