@@ -256,8 +256,12 @@ footer{
   padding: 20px;
 }
 
-.update-grid{
-  grid-template-columns: 1fr 1fr;
+.update-grid {
+  gap: 20px;
+}
+
+.update-grid form {
+  margin: 10px;
 }
 
 form{
@@ -356,7 +360,7 @@ input:required:valid {
   margin: 10px;
   padding: 20px;
   border-radius: 30px;
-  
+  max-width: 300px;
 }
 
 #inventoryDisplay a {
@@ -478,6 +482,14 @@ input:required:valid {
 
 #detail-display h2 {
   padding-top: 0px;
+}
+
+
+/***** forms ********/
+
+.update-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 0px;
 }
 
 /***** error ********/
