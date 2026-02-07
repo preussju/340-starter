@@ -368,14 +368,14 @@ input:required:valid {
   font-family: var(--heading-font);
   color: white;
   padding: 10px;
-  margin: 20px;
+  margin: 10px;
   background-color: var(--primary-color);
   border-radius: 30px;
 }
 
 #inventoryDisplay td{
-  padding: 10px;
-  margin: 20px;
+  padding: 3px;
+  margin: 3px;
 }
 
 @media screen and (min-width: 800px) {
