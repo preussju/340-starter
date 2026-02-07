@@ -11,9 +11,9 @@
 <div class="update-grid">
     <form id="updateAccountForm" action="/account/update" method="post">
         <p>Update your Personal Information</p>
-            <label for="fname">First Name:</label><br>
+            <label for="accountFirstname">First Name:</label><br>
             <input type="text" name="account_firstname" id="accountFirstname" required value="<%= locals.account_firstname %>">
-            <label for="lname">Last Name:</label><br>
+            <label for="accountLastname">Last Name:</label><br>
             <input type="text" name="account_lastname" id="accountLastname" required value="<%= locals.account_lastname %>">
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="account_email" required placeholder="Enter a valid email address" value="<%= locals.account_email %>"><br>

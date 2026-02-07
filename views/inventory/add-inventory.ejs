@@ -15,7 +15,7 @@
     <form id="invForm" action="/inv/new-inventory" method="post">
         <p>All Fields are Required</p>
 
-        <label for="classification_id">Classification:</label><br>
+        <label for="classificationList">Classification:</label><br>
         <%- classificationList %>
 
         <label for="inv_make">Make:</label><br>
@@ -25,7 +25,7 @@
         <input type="text" id="inv_model" name="inv_model" required minlength="3" value="<%= locals.inv_model %>"><br>
         
         <label for="inv_description">Description:</label><br>
-        <textarea type="text" id="inv_description" name="inv_description" rows="4" required></textarea><br>
+        <textarea id="inv_description" name="inv_description" rows="4" required></textarea><br>
         
         <label for="inv_image">Image Path:</label><br>
         <input type="text" id="inv_image" name="inv_image" required pattern="/images/vehicles/.*\.(jpg|jpeg|png)$" value="/images/vehicles/no-image.png"><br>
