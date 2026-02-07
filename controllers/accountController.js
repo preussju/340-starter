@@ -29,6 +29,28 @@ async function buildRegister(req, res, next) {
   })
 }
 
+
+/* ****************************************
+*  Deliver update view
+* *************************************** */
+async function buildUpdate(req, res, next) {
+  let nav = await utilities.getNav()
+
+  const account_id = parseInt(req.params.accountId)
+  const accountData = await accountModel.getAccountById(account_id)
+
+  res.render("account/update", {
+    title: "Edit Account",
+    nav,
+    errors: null,
+    account_firstname: accountData.account_firstname,
+    account_lastname: accountData.account_lastname,
+    account_email: accountData.account_email,
+    account_id: accountData.account_id
+  })
+}
+
+
 /* ****************************************
 *  Deliver management view
 * *************************************** */
@@ -150,4 +172,4 @@ async function logout(req, res) {
 
 
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement, logout}
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManagement, logout, buildUpdate}

@@ -179,9 +179,8 @@ h3, h4{
 }
 
 footer{
-  padding: 10px;
+  padding: 10px; 
 }
-
 
 /***** inventory ********/
 
@@ -249,11 +248,16 @@ footer{
 .add-classification-grid,
 .add-inv-grid,
 .edit-inv-grid,
-.delete-inv-grid {
+.delete-inv-grid ,
+.update-grid{
   display: grid;
   place-items: center;
   background-color: var(--primary-color);
   padding: 20px;
+}
+
+.update-grid{
+  grid-template-columns: 1fr 1fr;
 }
 
 form{
@@ -321,12 +325,23 @@ input:required:valid {
   padding: 10px;
 }
 
-.account-management h1{
+.account-management h1,
+.account-management h2{
  font-family: var(--heading-font);
 }
 
-.account-management h2{
- padding: 10px;
+.account-management h2, 
+.account-management p,
+.admin-section h3{
+  background-color: antiquewhite;
+  text-align: center;
+  padding: 10px;
+}
+
+.admin-section a,
+.account-management a {
+  color: black;
+  font-size: 1.3rem;
 }
 
 /*inv management view */
@@ -358,7 +373,6 @@ input:required:valid {
   padding: 10px;
   margin: 20px;
 }
-
 
 @media screen and (min-width: 800px) {
 

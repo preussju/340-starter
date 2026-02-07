@@ -140,20 +140,20 @@ utilities.checkLoginStatus = (req, res, next) => {
   next()
 }
 
-// /* ******************************
-//  * logs out  
-//  * ***************************** */
+/* *****************************
+ * Checks Account Type
+ * ***************************** */
+validate.checkAccountType = (req, res, next) => {
+  // Check if user is logged in and has the right role
+  if (res.locals.loggedin && (res.locals.accountData.account_type === "Employee" || res.locals.accountData.account_type === "Admin")) {
+    next()
+  } else {
+    req.flash("notice", "Please log in with an authorized account to access this area.")
+    return res.redirect("/account/login")
+  }
+}
 
-// utilities.logout = (req, res) => {
-//   req.session.destroy((err) => {
-//     if (err) {
-//       console.error("Logout error:", err)
-//       return res.redirect("/") 
-//     }
-//     res.clearCookie("connect.sid") // clear session cookie
-//     res.redirect("/")
-//   })
-// }
+
 
 
 module.exports = validate, utilities

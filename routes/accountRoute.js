@@ -10,6 +10,9 @@ const utilities = require("../utilities/index")
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 //registration view 
 router.get("/register", utilities.handleErrors(accountController.buildRegister));
+//update view 
+router.get("/update/:accountId", utilities.handleErrors(accountController.buildUpdate));
+
 //account management view
 router.get("/",  utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement));
 
