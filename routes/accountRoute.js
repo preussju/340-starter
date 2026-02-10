@@ -23,8 +23,8 @@ router.post('/login', regValidate.LoginRules(), regValidate.checkLoginData, util
 // Process the login attempt
 //router.post("/login", (req, res) => { res.status(200).send('login process') })
 //edit input 
-router.post("/update-info", utilities.handleErrors(accountController.updateAccountData));
+router.post("/update-info",regValidate.UpdateRules(), regValidate.checkUpdateData, utilities.handleErrors(accountController.updateAccountData));
 //edit password input 
-router.post("/update-password", utilities.handleErrors(accountController.updatePasswordAccountData));
+router.post("/update-password", regValidate.checkUpdatePasswordRules(), regValidate.checkUpdatePasswordData,  utilities.handleErrors(accountController.updatePasswordAccountData));
 
 module.exports = router;

@@ -179,7 +179,7 @@ async function updateAccountData(req, res) {
     
   } else {
     req.flash("notice", "Sorry, the update failed.")
-    res.status(501).render("account/update", {
+    res.status(501).render("/account", {
       title: "Edit Account",
       nav,
       errors: null,
