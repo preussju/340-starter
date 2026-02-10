@@ -9,7 +9,7 @@
 <h1>Account Update</h1>
 
 <div class="update-grid">
-    <form id="updateAccountForm" action="/account/update" method="post">
+    <form id="updateAccountForm" action="/account/update-info" method="post">
         <p>Update your Personal Information</p>
             <label for="accountFirstname">First Name:</label><br>
             <input type="text" name="account_firstname" id="accountFirstname" required value="<%= locals.account_firstname %>">
@@ -21,7 +21,7 @@
 
             <input type="hidden" name="account_id" value="<%= locals.accountData ? locals.accountData.account_id : locals.account_id %>">
     </form>
-    <form id="updatePasswordForm" action="/account/update" method="post">
+    <form id="updatePasswordForm" action="/account/update-password" method="post">
         <p>Update your Password Will Change the Current Password</p>
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">

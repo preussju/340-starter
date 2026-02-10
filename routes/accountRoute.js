@@ -10,7 +10,7 @@ const utilities = require("../utilities/index")
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 //registration view 
 router.get("/register", utilities.handleErrors(accountController.buildRegister));
-//update view 
+//update account
 router.get("/update/:accountId", utilities.handleErrors(accountController.buildUpdate));
 
 //account management view
@@ -22,7 +22,9 @@ router.post('/register', regValidate.registrationRules(), regValidate.checkRegDa
 router.post('/login', regValidate.LoginRules(), regValidate.checkLoginData, utilities.handleErrors(accountController.accountLogin))
 // Process the login attempt
 //router.post("/login", (req, res) => { res.status(200).send('login process') })
-
-
+//edit input 
+router.post("/update-info", utilities.handleErrors(accountController.updateAccountData));
+//edit password input 
+router.post("/update-password", utilities.handleErrors(accountController.updatePasswordAccountData));
 
 module.exports = router;
