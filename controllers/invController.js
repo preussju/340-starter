@@ -36,13 +36,15 @@ invCont.buildBydetailId= async function (req, res, next) {
     err.status = 404
     return next(err)
   }
-  const grid = await utilities.buildDetailGrid(data)
+  const reviews = await invModel.getReviewById(detail_id)
+  const grid = await utilities.buildDetailGrid(data, res.locals.loggedin, res.locals.accountData, reviews)
   let nav = await utilities.getNav()
   const className = data.inv_year + ' ' + data.inv_make + ' ' + data.inv_model 
   res.render("./inventory/detail", {
     title: className,
     nav,
     grid,
+    reviews,
     errors: null,
   })
 }
@@ -418,6 +420,43 @@ invCont.deleteInventory = async function (req, res, next) {
   }
 }
 
+/* ****************************************
+*  Process Review
+* *************************************** */
+
+  invCont.addNewReview = async function (req, res, next) {
+    
+    const { rev_text, rev_rate, inv_id, account_id } = req.body
+    const regResult = await invModel.addReview(rev_text, rev_rate, inv_id, account_id)
+
+    if (regResult) {
+      req.flash("notice", `Congratulations, you registered a new review!`)
+      //res.status(201).redirect(`/inv/detail/${inv_id}`)
+    } else {
+        req.flash("notice", "Sorry, something went wrong.")
+        //res.status(501).redirect(`/inv/detail/${inv_id}`)
+    }
+    res.redirect(`/inv/detail/${inv_id}`)
+  }
+
+/* ***************************
+ *  Build review by id view
+ * ************************** */
+invCont.buildReview = async function (req, res, next) {
+  const inv_id = req.params.detailId
+  const data = await invModel.getInventoryByDetailId(inv_id)
+  const reviews = await invModel.getReviewById(inv_id)
+  const nav = await utilities.getNav()
+  const grid = await utilities.buildDetailGrid(data, res.locals.loggedin, res.locals.accountData, reviews)
+
+  res.render("./inventory/detail", {
+    title: "teste",
+    nav,
+    grid,
+    reviews, 
+    errors: null,
+  })
+}
 
 
   module.exports = invCont;

@@ -12,7 +12,7 @@ router.get("/type/:classificationId",
     invController.buildByClassificationId);
 // Route to build details by classification view
 router.get("/detail/:detailId",
-    invController.buildBydetailId);
+    utilities.handleErrors(invController.buildReview));
 // Route to inventory edit management view
 router.get("/",
     accountValidate.checkAccountType,
@@ -60,5 +60,7 @@ router.post("/edit/",
 router.post("/delete/",
     accountValidate.checkAccountType,
     utilities.handleErrors(invController.deleteInventory));//
+//send review
+router.post("/detail/:detailId", utilities.handleErrors(invController.addNewReview))
 
 module.exports = router;

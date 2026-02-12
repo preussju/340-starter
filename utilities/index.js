@@ -64,9 +64,9 @@ Util.buildClassificationGrid = async function(data){
 }
 
 /* **************************************
-* Build the detail view HTML
+* Build the detail view HTML and review
 * ************************************/
-Util.buildDetailGrid = async function(data){
+Util.buildDetailGrid = async function(data, loggedin, accountData, reviews){
   let grid
   if(data){
     grid = `
@@ -81,8 +81,50 @@ Util.buildDetailGrid = async function(data){
       </div>
     </div>
     `
+  grid += `<hr><div class="reviews-section">`
+  grid += `<h3>Customer Reviews</h3>`
+
+  if (reviews && reviews.length > 0) {
+    grid += `<ul id="review-list">`
+    reviews.forEach(review => {
+      const date = new Date(review.rev_date).toLocaleDateString()
+      
+      grid += `
+        <li>
+          <p><strong>${review.account_firstname}</strong> wrote on ${date}:</p>
+          <p class="review-text">"${review.rev_text}"</p>
+          <p class="review-rating">Rating: ${review.rev_rate}/5</p>
+        </li>`
+    })
+    grid += `</ul>`
+  } else {
+    grid += `<p class="no-reviews">Be the first to write a review!</p>`
+  }
+
+    if (loggedin) {
+      grid += `
+      <div class="review-form">
+        <form id="reviewForm" action="/inv/detail/${data.inv_id}" method="post">
+          <p>Logged in as: <strong>${accountData.account_firstname}</strong></p>
+          
+          <label for="rev_rate">Rating (1-5):</label><br>
+          <input type="number" name="rev_rate" id="rev_rate" min="1" max="5" required><br>
+
+          <label for="rev_text">Your Review:</label><br>
+          <textarea name="rev_text" id="rev_text" required placeholder="Write your opinion here..."></textarea><br>
+
+          <input type="submit" value="Submit Review">
+
+          <input type="hidden" name="inv_id" value="${data.inv_id}">
+          <input type="hidden" name="account_id" value="${accountData.account_id}">
+        </form>
+      `
+    } else {
+      grid += `<p class="notice-review">Please <a href="/account/login">Login</a> to write a review.</p>`
+    }
+    grid += `</div>`
   } else { 
-    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+    grid = '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
   return grid
 } 
