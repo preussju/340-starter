@@ -88,12 +88,11 @@ Util.buildDetailGrid = async function(data, loggedin, accountData, reviews){
     grid += `<ul id="review-list">`
     reviews.forEach(review => {
       const date = new Date(review.rev_date).toLocaleDateString()
-      
       grid += `
         <li>
           <p><strong>${review.account_firstname}</strong> wrote on ${date}:</p>
           <p class="review-text">"${review.rev_text}"</p>
-          <p class="review-rating">Rating: ${review.rev_rate}/5</p>
+          <p class="review-rating">Rating:<strong> ${review.rev_rate}/5</strong></p>
         </li>`
     })
     grid += `</ul>`

@@ -181,4 +181,54 @@ validate.checkUpdateData = async (req, res, next) => {
   next()
 }
 
+/* **********************************
+ * Review Validation Rules
+ * ********************************* */
+validate.reviewRules = () => {
+  return [
+    body("rev_text")
+      .trim()
+      .isLength({ min: 1 })
+      .withMessage("Please provide a review text."),
+
+    body("rev_rate")
+      .trim()
+      .isInt({ min: 1, max: 5 })
+      .withMessage("Rating must be a number between 1 and 5."),
+    
+    body("inv_id").isInt().withMessage("Invalid inventory ID."),
+    body("account_id").isInt().withMessage("Invalid account ID."),
+  ]
+}
+
+/* ******************************
+ * Check review data and return errors
+ * ***************************** */
+validate.checkReviewData = async (req, res, next) => {
+  const { rev_text, rev_rate, inv_id, account_id } = req.body
+  let errors = validationResult(req)
+  
+  if (!errors.isEmpty()) {
+    const invModel = require("../models/inventory-model")
+    const utilities = require("../utilities/")
+    
+    const data = await invModel.getInventoryByDetailId(inv_id)
+    const reviews = await invModel.getReviewById(inv_id)
+    const nav = await utilities.getNav()
+    const grid = await utilities.buildDetailGrid(data, res.locals.loggedin, res.locals.accountData, reviews)
+    
+    res.render("inventory/detail", {
+      title: `${data.inv_make} ${data.inv_model}`,
+      nav,
+      grid,
+      errors: errors.array(),
+      rev_text,
+      rev_rate
+    })
+    return
+  }
+  next()
+}
+
+
 module.exports = validate

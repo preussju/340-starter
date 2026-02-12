@@ -61,6 +61,9 @@ router.post("/delete/",
     accountValidate.checkAccountType,
     utilities.handleErrors(invController.deleteInventory));//
 //send review
-router.post("/detail/:detailId", utilities.handleErrors(invController.addNewReview))
+router.post("/detail/:detailId",
+    regValidate.reviewRules(),
+    regValidate.checkReviewData,
+    utilities.handleErrors(invController.addNewReview))
 
 module.exports = router;

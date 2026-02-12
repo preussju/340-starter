@@ -450,7 +450,7 @@ invCont.buildReview = async function (req, res, next) {
   const grid = await utilities.buildDetailGrid(data, res.locals.loggedin, res.locals.accountData, reviews)
 
   res.render("./inventory/detail", {
-    title: "teste",
+    title: `${data.inv_make} ${data.inv_model}`,
     nav,
     grid,
     reviews, 

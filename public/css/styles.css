@@ -258,6 +258,30 @@ footer{
   padding: 20px;
 }
 
+.reviews-section {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+#review-list {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: rgba(250, 235, 215, 0.329);
+  list-style: none;
+  border-radius: 5px;
+}
+
+#review-list li {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #ccc;
+}
+
+
+
 .update-grid {
   gap: 20px;
 }
